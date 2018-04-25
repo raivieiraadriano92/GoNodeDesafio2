@@ -10,25 +10,20 @@ const md = require('markdown-it')({
 });
 
 module.exports = (sequelize, DataTypes) => {
-  const Snippet = sequelize.define('Snippet', {
+  const Section = sequelize.define('Section', {
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
   }, {
     getterMethods: {
-      excerpt() {
-        return this.content.length > 120
-          ? `${this.content.substring(0, this.content.lastIndexOf(' ', 120))}...`
-          : this.content;
-      },
       formatedContent() {
         return md.render(this.content);
       },
     },
   });
 
-  Snippet.associate = (models) => {
-    Snippet.belongsTo(models.Category);
+  Section.associate = (models) => {
+    Section.belongsTo(models.Project);
   };
 
-  return Snippet;
+  return Section;
 };

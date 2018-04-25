@@ -1,15 +1,15 @@
 module.exports = {
   up: (queryInterface, DataTypes) => {
-    queryInterface.createTable('Snippets', {
+    queryInterface.createTable('Projects', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      CategoryId: {
+      UserId: {
         type: DataTypes.INTEGER,
-        references: { model: 'Categories', key: 'id' },
+        references: { model: 'Users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         allowNull: false,
@@ -17,10 +17,6 @@ module.exports = {
       title: {
         allowNull: false,
         type: DataTypes.STRING,
-      },
-      content: {
-        allowNull: false,
-        type: DataTypes.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +30,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    queryInterface.dropTable('Snippets');
+    queryInterface.dropTable('Projects');
   },
 };
