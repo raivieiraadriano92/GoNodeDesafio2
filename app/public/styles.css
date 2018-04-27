@@ -127,6 +127,11 @@ input:focus, textarea:focus {
   color: #FFF;
 }
 
+.wrapper #header a {
+  color: #FFF;
+  text-decoration: none;
+}
+
 .wrapper #header .container {
   display: flex;
   flex-direction: row;
@@ -283,6 +288,22 @@ input:focus, textarea:focus {
   border: 1px solid #DDD;
   margin: 0 8px 0 0;
   width: 160px;
+}
+
+form.edit input {
+  background: #fff;
+  border-radius: 3px;
+  height: 40px;
+  padding: 0 20px;
+  color: #444;
+  font-size: 15px;
+  border: 1px solid #DDD;
+  margin: 0 8px 8px 0;
+  width: 100%;
+}
+
+form.edit .content-container {
+  margin-bottom: 8px;
 }
 
 .wrapper section#main #content article {

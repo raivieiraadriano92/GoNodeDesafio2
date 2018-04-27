@@ -43,6 +43,7 @@ routes.delete('/app/projects/:id', projectController.destroy);
  * Section
  */
 routes.get('/app/projects/:projectId/sections/:id', sectionController.show);
+routes.get('/app/projects/:projectId/sections/:id/edit', sectionController.edit);
 routes.post('/app/projects/:projectId/sections/store', sectionController.store);
 routes.put('/app/projects/:projectId/sections/:id', sectionController.update);
 routes.delete('/app/projects/:projectId/sections/:id', sectionController.destroy);

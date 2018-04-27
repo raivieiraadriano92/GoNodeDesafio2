@@ -12,7 +12,7 @@ module.exports = {
 
       req.flash('success', 'Seção criada com sucesso');
 
-      return res.redirect(`/app/projects/${projectId}/sections/${section.id}`);
+      return res.redirect(`/app/projects/${projectId}/sections/${section.id}/edit`);
     } catch (err) {
       return next(err);
     }
@@ -20,6 +20,8 @@ module.exports = {
 
   async show(req, res, next) {
     try {
+      const { user } = req.session;
+
       const { projectId, id } = req.params;
 
       const project = await Project.findById(projectId);
@@ -34,6 +36,32 @@ module.exports = {
         project,
         sections,
         currentSection: section,
+        user,
+      });
+    } catch (err) {
+      return next();
+    }
+  },
+
+  async edit(req, res, next) {
+    try {
+      const { user } = req.session;
+
+      const { projectId, id } = req.params;
+
+      const project = await Project.findById(projectId);
+
+      const sections = await Section.findAll({
+        where: { ProjectId: projectId },
+      });
+
+      const section = await Section.findById(id);
+
+      return res.render('sections/edit', {
+        project,
+        sections,
+        currentSection: section,
+        user,
       });
     } catch (err) {
       return next();
